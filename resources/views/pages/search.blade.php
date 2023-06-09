@@ -1,172 +1,134 @@
 @extends('frontend.layouts.app')
 
+
+
 @section('content')
-
-<section class="page-title-two bg-color-1 centred">
-    <div class="pattern-layer">
-        <div class="pattern-1" style="background-image: url(frontend/images/shape/shape-9.png);"></div>
-        <div class="pattern-2" style="background-image: url(frontend/images/shape/shape-10.png);"></div>
-    </div>
-    <div class="auto-container">
-        <div class="content-box clearfix">
-            <h1>البحث عن عقار</h1>
-            <ul class="bread-crumb clearfix">
-                <li><a href="index.html">الرئيسية</a></li>
-            </ul>
+<section class="page-banner padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <h1 class="text-uppercase">العقارات</h1>
+          <ol class="breadcrumb text-center">
+            <li><a href="{{route('home')}}">الرئيسية</a></li>
+            <li class="active">قائمة العقارات</li>
+          </ol>
         </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<section class="property-page-section property-list">
-    <div class="auto-container">
-        <div class="row clearfix">
-            <div class="col-lg-4 col-md-12 col-sm-12 sidebar-side">
-                <div class="default-sidebar property-sidebar">
-                    <div class="filter-widget sidebar-widget">
-                        <div class="widget-title">
-                            <h5 class="text-center font-weight-bold">معلومات العقار</h5>
-                        </div>
-                        <form class="sidebar-search" action="{{ route('search')}}" method="GET">
-
-                        <div class="widget-content">
-                            <div class="form-group" style="text-align: right;">
-                                <label>الموقع</label>
-                                <div class="field-input">
-                                    <input class="form-control" type="text" name="city" placeholder="مدينة-منطقة" required="">
-                                </div>
-                            </div>
-
-                            <div class="select-box" style="text-align: right;">
-                                <select name="type" class="wide" >
-                                    <option value="" data-display="اختر النوع" disabled selected>اختر النوع</option>
-                                    <option value="شقة">شقة</option>
-                                    <option value="بيت">بيت</option>
-                                    <option value="ملحق">ملحق</option>
-                                    <option value="عمارة">عمارة</option>
-                                </select>
-                            </div>
-                            <div class="select-box" style="text-align: right;">
-                                <select name="purpose" class="wide" >
-                                    <option value="" data-display="اختر الغرض" disabled selected>اختر الغرض</option>
-                                    <option value="إيجار">إيجار</option>
-                                    <option value="بيع">بيع</option>
-                                </select>
-                            </div>
-
-                            <div class="select-box" style="text-align: right;">
-                                <select name="bedroom" class="wide" >
-                                    <option value="" disabled selected>اختر غرف</option>
-                                    @foreach($bedroomdistinct as $bedroom)
-                                        <option value="{{$bedroom->bedroom}}">{{$bedroom->bedroom}}</option>
-                                    @endforeach
-                                    </select>
-                            </div>
-
-                            <div class="select-box" style="text-align: right;">
-                                <select name="bathroom" class="wide" >
-                                    <option value="" disabled selected>اختر دورات المياة</option>
-                                    @foreach($bathroomdistinct as $bathroom)
-                                    <option value="{{$bathroom->bathroom}}">{{$bathroom->bathroom}}</option>
-                                @endforeach
-                                    </select>
-                            </div>
-
-                            <div class="form-group" style="text-align: right;">
-                                <div class="field-input">
-                                    <input class="form-control" type="number" name="minprice" placeholder="أقل سعر" required="">
-                                </div>
-                            </div>
-
-                            <div class="form-group" style="text-align: right;">
-                                <div class="field-input">
-                                    <input class="form-control" type="number" name="maxprice" placeholder="أعلى سعر" required="">
-                                </div>
-                            </div>
-
-                            <div class="form-group" style="text-align: right;">
-                                <div class="field-input">
-                                    <input class="form-control" type="number" name="minarea" placeholder="أقل مساحة أرضية" required="">
-                                </div>
-                            </div>
-
-                            
-                            <div class="form-group" style="text-align: right;">
-                                <div class="field-input">
-                                    <input class="form-control" type="number" name="maxarea" placeholder="أعلى مساحة أرضية" required="">
-                                </div>
-                            </div>
-
-                            <div class="form-group" style="text-align: right;">
-                                <div class="field-input">
-                                    <label>
-                                        <input type="checkbox" name="featured">
-                                        <span class="lever"></span>
-                                        مميز
-                                    </label>
-                                    </div>
-                            </div>
-                            <div class="filter-btn">
-                                <button type="submit" class="theme-btn btn-one"><i class="fas fa-filter"></i>&nbsp;بحث</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!-- Listing Start -->
+<section id="listing1" class="listing1 padding_top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-12 col-xs-12">
+          <div class="row">
+            <div class="col-md-9 text-center">
+              <h2 class="uppercase">قائمة العقارات</h2>
+              <p class="heading_space">تصفح مجموعة متنوعه من العقارات المميزة</p>
             </div>
+          </div>
+          <div class="row">      
+            @foreach($properties as $property)
 
-            <div class="col-lg-8 col-md-12 col-sm-12 content-side">
-                <div class="property-content-side">
-                    <div class="wrapper list">
-                        <div class="deals-list-content list-item">
-                            @foreach($properties as $property)
-                            <div class="deals-block-one">
-                                <div class="inner-box">
-
-                                    @if(Storage::disk('public')->exists('property/'.$property->image) && $property->image)
-                                    <div class="image-box">
-                                        <figure class="image"><img src="{{Storage::url('property/'.$property->image)}}" alt="{{$property->title}}"></figure>
-                                        <div class="batch"><i class="icon-11"></i></div>
-                                    </div>
-                                    @else
-                                    <div class="image-box">
-                                        <figure class="image"><img src="frontend/images/resource/deals-3.jpg" alt=""></figure>
-                                        <div class="batch"><i class="icon-11"></i></div>
-                                    </div>
-
-                                    @endif
-
-
-                                    <div class="lower-content">
-                                        <div class="title-text"><h4><a href="{{ route('property.show',$property->slug) }}">{{$property->title}}</a></h4></div>
-                                        <div class="price-box clearfix">
-                                            <div class="price-info pull-left">
-                                                <h6>{{ $property->type }} - {{ $property->purpose }}</h6>
-                                                <h4>{{ $property->price }}</h4>
-                                            </div>
-                                            <div class="author-box pull-right">
-                                                    <span>{{ ucfirst($property->city) }} - {{ ucfirst($property->address) }}</span>
-                                            </div>
-                                        </div>
-                                        <ul class="more-details clearfix">
-                                            <li><i class="icon-14"></i>غرف نوم: <strong>{{ $property->bedroom}}</strong></li>
-                                            <li><i class="icon-15"></i>دورات مياه: <strong>{{ $property->bathroom}}</strong></li>
-                                            <li><i class="icon-16"></i>مساحة أرضية: <strong>{{ $property->area}}</strong></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-
-                        </div>
-                    </div>
+            <div class="col-sm-6">
+              <div class="property_item heading_space">
+                <div class="property_head text-center">
+                  <h3 class="captlize"><a href="{{ route('property.show',$property->slug) }}">{{ str_limit( $property->title, 18 ) }}</a></h3>
+                  <p>{{ $property->address }} -  {{ $property->city }}</p>
                 </div>
+                <div class="image">
+                  @if(Storage::disk('public')->exists('property/'.$property->image) && $property->image)
+                  <a href="{{ route('property.show',$property->slug) }}"><img src="{{Storage::url('property/'.$property->image)}}" alt="{{ str_limit( $property->title, 18 ) }}"  class="img-responsive"></a>
+                  @else
+                  <a href="{{ route('property.show',$property->slug) }}."><img src="{{$property->image}}" alt="{{ str_limit( $property->title, 18 ) }}" class="img-responsive"></a> 
+                  @endif
+                  <div class="price clearfix"> 
+                    <span class="tag">{{$property->status}}</span>
+                  </div>
+                </div>
+                <div class="proerty_content">
+                  <div class="property_meta"> 
+                    <span><i class="icon-select-an-objecto-tool"></i>{{ $property->area}} متر مربع</span>
+                    <span><i class="icon-bed"></i>غرف {{ $property->bedroom}}</span> 
+                    <span><i class="icon-safety-shower"></i>دورات مياه {{ $property->bathroom}}</span> 
+                  </div>
+                  <div class="favroute clearfix">
+                    <p class="pull-md-left">{{ $property->price }} ريال</p>
+                    <ul class="pull-right">
+                      <li><a href="{{ route('property.show',$property->slug) }}"><i class="icon-like"></i></a></li>
+                      <li><a href="{{ route('property.show',$property->slug) }}" class="share_expender" data-toggle="collapse"><i class="icon-information"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
+            @endforeach
+
+          </div>
+         
+          <div class="padding_bottom text-center">
+            {{ $properties->links() }}
+          </div>
+
         </div>
+        <aside class="col-md-4 col-xs-12">
+          <div class="property-query-area clearfix" dir="rtl">
+            <div class="col-md-12">
+              <h3 class="text-uppercase bottom20 top15 text-center">البحث المخصص</h3>
+            </div>
+            <form method="GET" action="{{ route('search')}}" class="callus">
+
+                <div class="single-query form-group col-sm-12">
+                    <input type="text" class="keyword-input" name="city" placeholder="مدينة-منطقة">
+                  </div>
+        
+        
+                  <div class="single-query form-group col-sm-12">
+                    <div class="intro">
+                      <select name="type">
+                        <option value="شقة">شقة</option>
+                        <option value="بيت">بيت</option>
+                        <option value="ملحق">ملحق</option>
+                        <option value="عمارة">عمارة</option>
+                    </select>
+                  </div>
+                  </div>
+        
+                <div class="single-query form-group col-sm-12">
+                    <div class="intro">
+                      <select name="purpose">
+                        <option value="ايجار">ايجار</option>
+                        <option value="بيع">بيع</option>
+                    </select>
+                    </div>
+                  </div>
+        
+                <div class="single-query form-group col-sm-12">
+                    <div class="intro">
+                      <select class="custom-select-box">
+                        <option value="" disabled selected>عدد الغرف</option>
+                        @if(isset($bedroomdistinct))
+                             @foreach($bedroomdistinct as $bedroom)
+                                 <option value="{{$bedroom->bedroom}}">{{$bedroom->bedroom}}</option>
+                             @endforeach
+                         @endif
+                        </select>
+                      </div>
+                </div>
+                <div class="col-sm-12 form-group text-center">
+                    <button type="submit" class="btn-blue border_radius top15"><i class="icon-search"></i> بحث</button>
+                </div>
+      
+          
+        
+                </form>
+          
+          </div>
+  
+        </aside>
+      </div>
     </div>
-</section>
-
-
-@endsection
-
-@section('scripts')
-
+  </section>
+        
 @endsection
