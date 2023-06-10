@@ -1,32 +1,15 @@
 @charset "utf-8";
-/* Table of contents 
-+body
-+header
-+slider
-+property-query-area 
-+callus
-+single-query
-+property
-+property_item
-+image
-+proerty_content
-+proerty_text
-+proerty_meta
-+deals
-+full-slider
-+item
-+deal_media
-+feature_property
-+testinomial
-+cd-testimonials-all
-+cd-testimonials-all-wrapper
-.cd-testimonials-item
-+footer
-+footer_panel
-+social_share
-+copyright 
 
-*/
+@font-face {
+  font-family: "JF Flat Regular";
+  src: url('../fonts/JF-Flat-regular.eot');
+  src: url('../fonts/JF-Flat-regular.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/JF-Flat-regular.svg#JF Flat Regular') format('svg'),
+  url('../fonts/JF-Flat-regular.woff') format('woff'),
+  url('../fonts/JF-Flat-regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 
 
@@ -61,7 +44,7 @@
 
 /* General Styling */
 body{
-	font-family: 'robotoregular';
+	font-family: 'JF Flat Regular','robotoregular';
 	height:100%;
 	width:100%;
 	overflow-x:hidden;
@@ -123,7 +106,7 @@ h3, h4{
 .feature_main .bottom h4, .proerty_text h4, #filters-gallery .cbp-filter-item, .property_item .price h4,
 #parallax_four h4, #parallax_four h2,
 .slider-property h2{
-	font-family: 'robotoregular';
+	font-family: 'JF Flat Regular','robotoregular';
 }
 h2{
 	font-size:32px;
