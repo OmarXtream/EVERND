@@ -97,17 +97,16 @@
       <div class="row">
       <div id="partners" class="owl-carousel">
 
-          <div class="item">
             @foreach($partners as $partner)
             @if(Storage::disk('public')->exists('partners/'.$partner->img))
-
+            <div class="item">
             <img src="{{Storage::url('partners/'.$partner->img)}}" alt="{{$partner->name}}">
+             </div>
 
             @endif
 
             @endforeach
 
-          </div>
 
         </div>
       </div>
