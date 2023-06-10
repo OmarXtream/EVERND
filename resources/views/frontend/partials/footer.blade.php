@@ -8,7 +8,7 @@
             <p>Copyright &copy; 2023 <span>EVERND</span>. All rights reserved.</p>
           </div>
           <div class="col-md-5 text-right">
-            <p>Developed by <a href="puzzle-sa.com">Puzzle</a></p>
+            <p>Developed by <a href="https://puzzle-sa.com">Puzzle</a></p>
           </div>
         </div>
       </div>
