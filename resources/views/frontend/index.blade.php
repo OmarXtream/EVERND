@@ -56,27 +56,27 @@
   </section>
 
   <section id="parallax" class="padding">
-    <div class="container">
-      <div class="row">
+    <div class="container overflow-hidden">
+      <div class="row gy-5">
         <div class="col-sm-12">
           <div class="parallax_inner text-center">
             <h2 class="text-capitalize bottom15">خدماتنا</h2>
             <p class="heading_space">لماذا تختارنا؟</p>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-md-4" style="margin-top:60px">
           <div class="parallax_inner text-center">
             <i class="icon-briefcase2 bottom30"></i>
             <h3 class="text-capitalize bottom15">التسويق العقاري</h3>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-md-4" style="margin-top:60px">
           <div class="parallax_inner text-center">
             <i class="icon-wallet2 bottom30"></i>
             <h3 class="text-capitalize bottom15">حلول مالية بأقل هامش ربح مع فائض</h3>
           </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-md-4" style="margin-top:60px">
           <div class="parallax_inner text-center">
             <i class="icon-diamond2 bottom30"></i>
             <h3 class="text-capitalize bottom15">توفير العقار بالمواصفات المطلوبة </h3>
@@ -87,7 +87,7 @@
   </section>
 
   <section id="logos">
-    <div class="container partner2 padding">
+    <div class="container-fluid partner2 padding">
       <div class="row">
         <div class="col-sm-12 text-center">
             <h2 class="uppercase">شركائنا</h2>
