@@ -31,6 +31,7 @@
           <h2 class="text-uppercase text-center">{{$property->title}}</h2>
           <p class="bottom30 text-center">{{ $property->address }} -  {{ $property->city }}</p>
           <p class="bottom30 text-center">ريال {{ $property->price }} </p>
+          <p class="bottom30 text-center">رقم العرض {{ $property->offerNo }} </p>
 
           <div id="property-d-1" class="owl-carousel single">
             @if(Storage::disk('public')->exists('property/'.$property->image) && $property->image)

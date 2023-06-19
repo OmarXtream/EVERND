@@ -26,6 +26,11 @@ class CreatePropertiesTable extends Migration
             $table->integer('bathroom');
             $table->string('city');
             $table->string('city_slug');
+
+            $table->string('region');
+            $table->string('region_slug');
+            $table->string('offerNo')->nullable();
+
             $table->string('address');
             $table->integer('area');
             $table->integer('agent_id');

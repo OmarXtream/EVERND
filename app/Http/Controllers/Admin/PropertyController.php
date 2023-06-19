@@ -47,6 +47,7 @@ class PropertyController extends Controller
             'type'      => 'required',
             'bedroom'   => 'required',
             'bathroom'  => 'required',
+            'region'    => 'required',
             'city'      => 'required',
             'address'   => 'required',
             'area'      => 'required',
@@ -91,6 +92,8 @@ class PropertyController extends Controller
 
         $property = new Property();
         $property->title    = $request->title;
+        $property->offerNo    = $request->offerNo;
+
         $property->slug     = $slug;
         $property->price    = $request->price;
         $property->purpose  = $request->purpose;
@@ -100,6 +103,10 @@ class PropertyController extends Controller
         $property->bathroom = $request->bathroom;
         $property->city     = $request->city;
         $property->city_slug= str_slug($request->city);
+
+        $property->region     = $request->region;
+        $property->region_slug= str_slug($request->region_slug);
+
         $property->address  = $request->address;
         $property->area     = $request->area;
         $property->status         = $request->status;
@@ -171,6 +178,7 @@ class PropertyController extends Controller
             'price'     => 'required',
             'purpose'   => 'required',
             'type'      => 'required',
+            'region'    => 'required',
             'bedroom'   => 'required',
             'bathroom'  => 'required',
             'city'      => 'required',
@@ -237,9 +245,14 @@ class PropertyController extends Controller
         $property->bathroom     = $request->bathroom;
         $property->city         = $request->city;
         $property->city_slug    = str_slug($request->city);
+
+        $property->region     = $request->region;
+        $property->region_slug= str_slug($request->region_slug);
+
         $property->address      = $request->address;
         $property->area         = $request->area;
         $property->status         = $request->status;
+        $property->offerNo    = $request->offerNo;
 
         if(isset($request->featured)){
             $property->featured = true;

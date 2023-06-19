@@ -34,6 +34,8 @@ class PropertiesImport implements ToModel,WithHeadingRow,WithValidation
             'bathroom' => $row['bathroom'],
             'city' => $row['city'],
             'city_slug' => str_slug($row['city']),
+            'region' => $row['region'],
+            'region_slug' => str_slug($row['region']),
             'address' => $row['address'],
             'area' => $row['area'],
             'agent_id' => 1,

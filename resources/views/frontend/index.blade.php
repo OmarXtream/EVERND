@@ -18,7 +18,7 @@
             <div class="property_item">
               <div class="property_head default_clr  text-center">
                 <h3 class="captlize"><a href="{{ route('property.show',$property->slug) }}">{{ str_limit( $property->title, 18 ) }}</a></h3>
-                <p>{{ $property->address }} -  {{ $property->city }}</p>
+                <p>{{ $property->region }} -  {{ $property->city }}</p>
               </div>
               <div class="image">
                 @if(Storage::disk('public')->exists('property/'.$property->image) && $property->image)

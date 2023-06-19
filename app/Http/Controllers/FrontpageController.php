@@ -15,6 +15,10 @@ class FrontpageController extends Controller
     
     public function index()
     {
+
+        $cities     = Property::select('city','city_slug')->distinct('city_slug')->get();
+        $regions     = Property::select('region','region_slug')->distinct('region_slug')->get();
+
         $sliders        = Slider::latest()->get();
         $partners        = partners::latest()->get();
         $properties     = Property::latest()->where('featured',1)->with('rating')->withCount('comments')->take(6)->get();
@@ -24,13 +28,18 @@ class FrontpageController extends Controller
         $testimonials   = Testimonial::latest()->get();
         $posts          = Post::latest()->where('status',1)->take(6)->get();
 
-        return view('frontend.index', compact('partners','sliders','properties','services','testimonials','posts','Normalproperties'));
+        return view('frontend.index', compact('cities','regions','partners','sliders','properties','services','testimonials','posts','Normalproperties'));
     }
 
 
     public function search(Request $request)
     {
+
+        $cities     = Property::select('city','city_slug')->distinct('city_slug')->get();
+        $regions     = Property::select('region','region_slug')->distinct('region_slug')->get();
+
         $city     = strtolower($request->city);
+        $region     = strtolower($request->region);
         $type     = $request->type;
         $purpose  = $request->purpose;
         $bedroom  = $request->bedroom;
@@ -44,6 +53,9 @@ class FrontpageController extends Controller
         $properties = Property::latest()->withCount('comments')
                                 ->when($city, function ($query, $city) {
                                     return $query->where('city', '=', $city);
+                                })
+                                ->when($region, function ($query, $region) {
+                                    return $query->where('region', '=', $region);
                                 })
                                 ->when($type, function ($query, $type) {
                                     return $query->where('type', '=', $type);
@@ -74,7 +86,7 @@ class FrontpageController extends Controller
                                 })
                                 ->paginate(10); 
 
-        return view('pages.search', compact('properties'));
+        return view('pages.search', compact('properties','regions','cities'));
     }
 
 }

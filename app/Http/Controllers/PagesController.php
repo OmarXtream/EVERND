@@ -25,9 +25,11 @@ class PagesController extends Controller
     public function properties()
     {
         $cities     = Property::select('city','city_slug')->distinct('city_slug')->get();
+        $regions     = Property::select('region','region_slug')->distinct('region_slug')->get();
+
         $properties = Property::latest()->with('rating')->withCount('comments')->paginate(12);
 
-        return view('pages.properties.property', compact('properties','cities'));
+        return view('pages.properties.property', compact('regions','properties','cities'));
     }
 
     public function propertieshow($slug)

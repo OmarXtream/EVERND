@@ -78,12 +78,30 @@
               <h3 class="text-uppercase bottom20 top15 text-center">البحث المخصص</h3>
             </div>
             <form method="GET" action="{{ route('search')}}" class="callus">
-
-                <div class="single-query form-group col-sm-12">
-                    <input type="text" class="keyword-input" name="city" placeholder="مدينة-منطقة">
+        
+        
+                  <div class="single-query form-group col-sm-12">
+                    <div class="intro">
+                      <select name="region">
+                        <option value="" disabled selected>المنطقة</option>
+                        @foreach($regions as $region)
+                        <option value="{{$region->region}}">{{$region->region}}</option>
+                        @endforeach
+                    </select>
+                    </div>
                   </div>
-        
-        
+    
+                  <div class="single-query form-group col-sm-12">
+                    <div class="intro">
+                      <select name="city">
+                        <option value="" disabled selected>المدينة</option>
+                        @foreach($cities as $city)
+                        <option value="{{$city->city}}">{{$city->city}}</option>
+                        @endforeach
+                    </select>
+                    </div>
+                  </div>
+    
                   <div class="single-query form-group col-sm-12">
                     <div class="intro">
                       <select name="type">
@@ -92,7 +110,7 @@
                         <option value="ملحق">ملحق</option>
                         <option value="عمارة">عمارة</option>
                     </select>
-                  </div>
+                    </div>
                   </div>
         
                 <div class="single-query form-group col-sm-12">

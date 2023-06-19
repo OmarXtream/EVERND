@@ -34,6 +34,14 @@
 
                     <div class="form-group form-float">
                         <div class="form-line">
+                            <input type="text" name="offerNo" class="form-control" value="{{$property->offerNo}}">
+                            <label class="form-label">رقم العرض</label>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group form-float">
+                        <div class="form-line">
                             <input type="number" name="price" class="form-control" value="{{$property->price}}" required>
                             <label class="form-label">السعر</label>
                         </div>
@@ -50,6 +58,13 @@
                         <div class="form-line">
                             <input type="number" class="form-control" name="bathroom" value="{{$property->bathroom}}" required>
                             <label class="form-label">دورات المياه</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="region" value="{{$property->region}}" required>
+                            <label class="form-label">المنطقة</label>
                         </div>
                     </div>
 
@@ -72,7 +87,7 @@
                             <input type="number" class="form-control" name="area" value="{{$property->area}}" required>
                             <label class="form-label">المنطقة</label>
                         </div>
-                        <div class="help-info">Square Feet</div>
+                        <div class="help-info">متر مربع</div>
                     </div>
 
                     <div class="form-group">

@@ -8,9 +8,29 @@
             <div class="row">
             <form method="GET" action="{{ route('search')}}" class="callus clearfix border_radius">
 
-        <div class="single-query form-group">
-            <input type="text" class="keyword-input" name="city" placeholder="مدينة-منطقة">
-          </div>
+
+              <div class="single-query form-group">
+                <div class="intro">
+                  <select name="region">
+                    <option value="" disabled selected>المنطقة</option>
+                    @foreach($regions as $region)
+                    <option value="{{$region->region}}">{{$region->region}}</option>
+                    @endforeach
+                </select>
+                </div>
+              </div>
+
+              <div class="single-query form-group">
+                <div class="intro">
+                  <select name="city">
+                    <option value="" disabled selected>المدينة</option>
+                    @foreach($cities as $city)
+                    <option value="{{$city->city}}">{{$city->city}}</option>
+                    @endforeach
+                </select>
+                </div>
+              </div>
+
 
 
           <div class="single-query form-group">
