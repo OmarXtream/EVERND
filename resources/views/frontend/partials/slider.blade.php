@@ -55,7 +55,7 @@
 
         <div class="single-query form-group">
             <div class="intro">
-              <select class="custom-select-box">
+              <select name="bedroom" class="custom-select-box">
                 <option value="" disabled selected>عدد الغرف</option>
                 @if(isset($bedroomdistinct))
                      @foreach($bedroomdistinct as $bedroom)
